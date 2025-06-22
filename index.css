@@ -1,0 +1,102 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --bg: #000;
+  --bg-card: #111;
+  --border: #333;
+  --text: #eaeaea;
+  --dim: #999;
+  --accent: #0070f3;
+  --radius: 0.5rem;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ---------- Layout ---------- */
+.container { max-width: 46rem; margin: auto; padding: 2rem 1rem 4rem; }
+h1 { font-size: 1.9rem; font-weight: 600; margin-bottom: 2rem; }
+h2 { font-size: 1.2rem; font-weight: 600; margin: 2.5rem 0 1rem; }
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+/* ---------- Fields ---------- */
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-size: .93rem; margin-bottom: .3rem; }
+input[type=text],
+input[type=email],
+input[type=password]{
+  width: 100%;
+  padding: .45rem .6rem;
+  font-size: .88rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+}
+input:focus-visible { outline: none; border-color: var(--accent); }
+
+.password-wrapper { position: relative; }
+.toggle {
+  position: absolute; right: .35rem; top: 50%;
+  transform: translateY(-50%);
+  font-size: .7rem; padding: .27rem .55rem;
+  background: transparent; border: 1px solid var(--border); color: var(--dim);
+}
+.toggle:focus-visible { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- Checkbox ---------- */
+.checkbox {
+  display: flex; gap: .5rem; align-items: center;
+  font-size: .93rem; margin-bottom: 1rem;
+}
+.checkbox input { accent-color: var(--accent); }
+
+/* ---------- Buttons ---------- */
+button { font: inherit; cursor: pointer; border-radius: var(--radius); border: none; }
+.primary   { background: var(--accent); color: #fff; padding: .55rem 1.3rem; font-weight: 500; }
+.secondary { background: transparent; color: var(--text); padding: .55rem 1.3rem; border: 1px solid var(--border); }
+.ghost     { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+
+.actions { display: flex; gap: .75rem; }
+
+/* ---------- Avatares (AAA) ---------- */
+.avatars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3.2rem, 1fr));
+  gap: .9rem;
+  margin: 1rem;
+}
+.avatar {
+  font-size: 2rem;
+  width: 3.2rem; height: 3.2rem;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+}
+.avatar.sel,
+.avatar:focus-visible { border-color: var(--accent); outline: none; }
+
+/* ---------- Auxiliares ---------- */
+.note { font-size: .82rem; color: var(--dim); margin-top: .4rem; display: flex; gap: .3rem; }
+.note.✓::before { content: '✓'; color: #00c851; font-weight: 600; }
+.alt   { font-size: .85rem; color: var(--dim); text-align: center; margin: .4rem 0 .7rem; }
+.preview { min-height: 1.2rem; font-size: .9rem; color: var(--dim); margin-bottom: 1rem; }
+
+.avatars {
+  list-style: none;     /* remove bullets/bolinhas */
+  padding-left: 0;      /* zera recuo extra */
+}

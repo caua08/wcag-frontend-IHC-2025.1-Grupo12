@@ -1,11 +1,11 @@
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens (LIGHT) ---------- */
 :root {
-  --bg: #000;
-  --bg-card: #111;
-  --border: #333;
-  --text: #eaeaea;
-  --dim: #999;
-  --accent: #0070f3;
+  --bg: #ffffff;         /* fundo da página */
+  --bg-card: #f8f9fa;    /* fundo dos cards/caixas */
+  --border: #d0d4d9;     /* linhas, contornos */
+  --text: #222222;       /* texto primário */
+  --dim: #6b6b6b;        /* textos secundários / notas */
+  --accent: #0070f3;     /* cor de destaque (botões, foco) */
   --radius: 0.5rem;
 }
 
@@ -43,7 +43,7 @@ input[type=password]{
   font-size: .88rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: transparent;
+  background: #fff;
   color: var(--text);
 }
 input:focus-visible { outline: none; border-color: var(--accent); }
@@ -68,9 +68,10 @@ input:focus-visible { outline: none; border-color: var(--accent); }
 button { font: inherit; cursor: pointer; border-radius: var(--radius); border: none; }
 .primary   { background: var(--accent); color: #fff; padding: .55rem 1.3rem; font-weight: 500; }
 .secondary { background: transparent; color: var(--text); padding: .55rem 1.3rem; border: 1px solid var(--border); }
-.ghost     { background: transparent; color: var(--dim); border: 1px solid var(--border); }
+.ghost     { background: #0070f3; color: #fff; border: 0px solid var(--border); }
 
-.actions { display: flex; gap: .75rem; }
+.actions { display: flex; gap: .75rem; justify-content: center; flex-direction: column; align-items: center; }
+.actions button { width: 50%; }
 
 /* ---------- Avatares (AAA) ---------- */
 .avatars {
@@ -78,6 +79,8 @@ button { font: inherit; cursor: pointer; border-radius: var(--radius); border: n
   grid-template-columns: repeat(auto-fit, minmax(3.2rem, 1fr));
   gap: .9rem;
   margin: 1rem;
+  list-style: none;     /* remove bullets */
+  padding-left: 0;
 }
 .avatar {
   font-size: 2rem;
@@ -91,12 +94,15 @@ button { font: inherit; cursor: pointer; border-radius: var(--radius); border: n
 .avatar:focus-visible { border-color: var(--accent); outline: none; }
 
 /* ---------- Auxiliares ---------- */
-.note { font-size: .82rem; color: var(--dim); margin-top: .4rem; display: flex; gap: .3rem; }
-.note.✓::before { content: '✓'; color: #00c851; font-weight: 600; }
-.alt   { font-size: .85rem; color: var(--dim); text-align: center; margin: .4rem 0 .7rem; }
+.note    { font-size: .82rem; color: var(--dim); margin-top: .4rem; display: flex; gap: .3rem; }
+.note.✓::before { content: '✓'; color: #00a000; font-weight: 600; }
+.alt     { font-size: .85rem; color: var(--dim); text-align: center; margin: .4rem 0 .7rem; }
 .preview { min-height: 1.2rem; font-size: .9rem; color: var(--dim); margin-bottom: 1rem; }
 
-.avatars {
-  list-style: none;     /* remove bullets/bolinhas */
-  padding-left: 0;      /* zera recuo extra */
+/* ---------- Fieldset (AAA) ---------- */
+.card fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .5rem .75rem 1rem;
+  margin: 0;
 }

@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>WCAG 3.3 · Demonstração</title>
+  <title>Demonstração de aplicação da WCAG.</title>
 
   <!-- Inter (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +14,12 @@
 
 <body>
   <main class="container">
-    <h1>WCAG 3.3 · Demonstração Estática</h1>
+    <h1>Demonstração de aplicação da WCAG.</h1>
 
     <!-- 1 · Dados de contato (3.3.7) -->
     <section aria-labelledby="contato">
-      <h2 id="contato">1 · Dados de contato (3.3.7)</h2>
+      <h1>WCAG 3.3.7 — Redundant Entry</h1>
+      <h2 id="contato">1 · Dados de Contato (3.3.7)</h2>
 
       <form id="form-contato" class="card" novalidate>
         <div class="field">
@@ -42,12 +43,12 @@
 
     <!-- 2 · Dados de envio (3.3.7) -->
     <section aria-labelledby="envio">
-      <h2 id="envio">2 · Dados de envio (3.3.7)</h2>
+      <h2 id="envio">2 · Dados de Envio (3.3.7)</h2>
 
       <form id="form-envio" class="card" novalidate>
         <label class="checkbox">
           <input type="checkbox" id="mesmo" />
-          Usar dados do passo anterior
+          Utilizar dados do passo anterior.
         </label>
 
         <div class="field">
@@ -62,6 +63,8 @@
     </section>
 
     <!-- 3 · Login AA (3.3.8) -->
+     <br/>
+    <h1>WCAG 3.3.8 — Accessible Authentication</h1>
     <section aria-labelledby="login-min">
       <h2 id="login-min">3 · Login — nível AA (3.3.8)</h2>
 
@@ -79,17 +82,18 @@
           </div>
         </div>
 
-        <p class="alt">ou</p>
-
         <div class="actions">
-          <button class="secondary" type="button" id="link-min">Enviar link mágico</button>
           <button class="primary"   type="submit">Entrar</button>
+          <p class="alt">ou</p>
+          <button class="secondary" type="button" id="link-min">Enviar link mágico</button>
         </div>
       </form>
 
       <p class="note ✓">Cópia/revelação de senha + alternativa sem memorização — cumpre o critério 3.3.8.</p>
     </section>
 
+     <br/>
+    <h1>WCAG 3.3.9 — Accessible Authentication</h1>
     <!-- 4 · Login AAA (3.3.9) -->
     <section aria-labelledby="login-max">
       <h2 id="login-max">4 · Login — nível AAA (3.3.9)</h2>

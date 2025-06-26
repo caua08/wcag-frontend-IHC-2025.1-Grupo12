@@ -8,6 +8,8 @@
 ## - WCAG 3.3.9 — Accessible Authentication
 - Ir além do mínimo: o processo de login não pode exigir nenhuma tarefa cognitiva complexa (memorizar, transcrever, resolver quebra-cabeça). Deve haver um caminho totalmente livre de barreiras cognitivas, como selecionar um ícone ou usar biometria. Isso torna a autenticação acessível até para quem tem deficiências cognitivas mais severas.
 
+### Esses três critérios, implementados em conjunto, reduzem barreiras de digitação repetitiva, oferecem caminhos de autenticação que não dependem apenas de memória ou visão e demonstram boas práticas de usabilidade inclusiva.
+
 ## Equipe
 <div class="md-typeset__scrollwrap"><div class="md-typeset__table"><table>
     <tbody><tr>

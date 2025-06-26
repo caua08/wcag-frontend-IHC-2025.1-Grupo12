@@ -1,63 +1,100 @@
-/* 3.3.7 – copiar endereço ----------------------------------------- */
+/* ==========================================================
+   WCAG 3.3.7 ▪ Redundant Entry
+   ----------------------------------------------------------
+   Se o usuário marcar “Utilizar dados do passo anterior”,
+   copiamos automaticamente o endereço já informado no
+   primeiro formulário para o campo de envio.
+   ========================================================== */
 document.getElementById('mesmo').addEventListener('change', e => {
-  const dest = document.getElementById('endereco-envio');
-  dest.value = e.target.checked ? document.getElementById('endereco').value : '';
+  const dest = document.getElementById('endereco-envio');        // campo destino
+  dest.value = e.target.checked                                   // se checkbox marcado
+    ? document.getElementById('endereco').value                   // → copia endereço original
+    : '';                                                         // se desmarcado → limpa
 });
 
+/* Intercepta o submit do 1º formulário apenas para fins de demo.
+   Na prática, aqui você enviaria os dados ao servidor. */
 document.getElementById('form-contato').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Dados de contato salvos! Marque a opção no passo 2 para reutilizá-los.');
+  e.preventDefault();                                             // evita recarregar a página
+  alert(
+    'Dados de contato salvos!\n' +
+    'Marque a opção no passo 2 para reutilizá-los.'
+  );
 });
 
-/* 3.3.8 – mostrar/ocultar senha + link mágico ---------------------- */
+
+/* ==========================================================
+   WCAG 3.3.8 ▪ Accessible Authentication (AA)
+   ----------------------------------------------------------
+   1) Botão “Mostrar/Ocultar” alterna a visibilidade da senha
+      — reduz erro de digitação e esforço de memória.
+   2) Botão “link mágico” oferece login sem senha (alternativa
+      cognitiva).
+   ========================================================== */
+/* 1 – alternância de visibilidade da senha */
 const btnToggle = document.getElementById('toggle-min');
 btnToggle.addEventListener('click', () => {
   const pwd = document.getElementById('pass-min');
-  const vis = pwd.type === 'password' ? 'text' : 'password';
-  pwd.type = vis;
-  btnToggle.textContent = vis === 'password' ? 'Mostrar' : 'Ocultar';
+  const isHidden = pwd.type === 'password';
+  pwd.type = isHidden ? 'text' : 'password';                      // troca o tipo
+  btnToggle.textContent = isHidden ? 'Ocultar' : 'Mostrar';       // atualiza rótulo
 });
 
+/* 2 – simulação de envio de “link mágico” por e-mail */
 document.getElementById('link-min').addEventListener('click', () => {
   alert('Um “link mágico” foi enviado ao seu e-mail (demonstração).');
 });
 
-/* 3.3.9 – reconhecimento visual ------------------------------------ */
-(() => {
-  const correto     = 'gato';            /* ícone cadastrado originalmente */
-  const avatars     = document.querySelectorAll('.avatar');
-  const previewEl   = document.getElementById('preview');
-  const testarBtn   = document.getElementById('testar-aaa');
-  let   tentativa   = null;              /* guarda a escolha do usuário */
 
-  /* 1 – Escolher ícone ------------------------------------------------ */
+/* ==========================================================
+   WCAG 3.3.9 ▪ Accessible Authentication (AAA)
+   ----------------------------------------------------------
+   Reconhecimento visual de avatar: o usuário escolhe o ícone
+   definido no cadastro. Código dividido em 3 etapas:
+   (1) capturar escolha, (2) permitir teste prévio, (3) validar
+   no submit. (IIFE usado para isolar variáveis.)
+   ========================================================== */
+(() => {
+  const correto   = 'gato';                       // ícone correto definido no cadastro
+  const avatars   = document.querySelectorAll('.avatar');
+  const previewEl = document.getElementById('preview');
+  const testarBtn = document.getElementById('testar-aaa');
+  let   tentativa = null;                         // última escolha do usuário
+
+  /* ---------- (1) Seleção do avatar ---------- */
   avatars.forEach(btn => {
     btn.addEventListener('click', () => {
-      avatars.forEach(b => { b.classList.remove('sel'); b.setAttribute('aria-pressed', 'false'); });
+      // Remove seleção anterior em todos
+      avatars.forEach(b => {
+        b.classList.remove('sel');
+        b.setAttribute('aria-pressed', 'false');
+      });
+
+      // Marca o botão clicado como ativo
       btn.classList.add('sel');
       btn.setAttribute('aria-pressed', 'true');
-      tentativa = btn.dataset.id;
-      testarBtn.disabled = false;
+      tentativa = btn.dataset.id;                 // grava tentativa
+      testarBtn.disabled = false;                 // habilita botão “Testar”
       previewEl.textContent = `Ícone selecionado: ${btn.textContent}`;
     });
   });
 
-  /* 2 – Testar seleção (pré-verificação) ----------------------------- */
+  /* ---------- (2) Teste prévio da escolha ---------- */
   testarBtn.addEventListener('click', () => {
-    if (!tentativa) return;
+    if (!tentativa) return;                       // segurança: nenhuma escolha feita
     const ok = tentativa === correto;
     previewEl.textContent = ok
       ? '✅ Seleção correta! Agora clique em “Entrar”.'
       : '❌ Seleção incorreta — tente outro ícone.';
   });
 
-  /* 3 – Submit final -------------------------------------------------- */
+  /* ---------- (3) Validação no submit ---------- */
   document.getElementById('form-login-max').addEventListener('submit', e => {
-    e.preventDefault();
+    e.preventDefault();                           // evita envio real
     if (tentativa === correto) {
       alert('Acesso concedido!');
     } else {
-      alert('Objeto incorreto, tente novamente.');
+      alert('Ícone incorreto, tente novamente.');
     }
   });
 })();

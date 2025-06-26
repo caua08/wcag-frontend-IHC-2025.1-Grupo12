@@ -1,51 +1,76 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<!-- Documento em HTML5. A declaração DOCTYPE ajuda o navegador a renderizar
+     a página no modo de compatibilidade mais recente. -->
+<html lang="pt-BR" class="dark"><!-- ❶ Define o idioma principal (pt-BR)
+      e aplica uma classe "dark" que o CSS pode usar para tema escuro. -->
 <head>
-  <meta charset="UTF-8" />
-  <title>Demonstração de aplicação da WCAG.</title>
+  <meta charset="UTF-8" /><!-- Codificação UTF-8, evita erros de acentuação. -->
+  <title>Demonstração de aplicação da WCAG.</title><!-- Título da aba. -->
 
-  <!-- Inter (Google Fonts) -->
+  <!-- ❷ Importa a família “Inter” (duas variações de peso) do Google Fonts.
+       O pré-conect garante melhor performance ao abrir a fonte. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  >
 
+  <!-- ❸ CSS principal da página -->
   <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
+  <!-- ❹ Conteúdo principal da página. “container” centraliza e limita largura. -->
   <main class="container">
+
     <h1>Demonstração de aplicação da WCAG.</h1>
 
-    <!-- 1 · Dados de contato (3.3.7) -->
-    <section aria-labelledby="contato">
+    <!--
+         SEÇÃO 1 · WCAG 3.3.7 — Redundant Entry
+         Usuário fornece dados de contato; no passo seguinte poderá reutilizá-los.
+    -->
+    <section aria-labelledby="contato"><!-- liga com <h2 id="contato"> -->
       <h1>WCAG 3.3.7 — Redundant Entry</h1>
       <h2 id="contato">1 · Dados de Contato (3.3.7)</h2>
 
+      <!-- “novalidate” evita que o browser trave o envio
+           e deixa a validação por conta do script (exemplos didáticos). -->
       <form id="form-contato" class="card" novalidate>
+        <!-- Campo de nome -->
         <div class="field">
           <label for="nome">Nome completo</label>
-          <input id="nome" name="nome" type="text" autocomplete="name" required />
+          <input id="nome" name="nome" type="text"
+                 autocomplete="name" required />
         </div>
 
+        <!-- Campo de e-mail -->
         <div class="field">
           <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
+          <input id="email" name="email" type="email"
+                 autocomplete="email" required />
         </div>
 
+        <!-- Campo de endereço -->
         <div class="field">
           <label for="endereco">Endereço</label>
-          <input id="endereco" name="endereco" type="text" autocomplete="street-address" required />
+          <input id="endereco" name="endereco" type="text"
+                 autocomplete="street-address" required />
         </div>
 
         <button class="primary" type="submit">Salvar contato</button>
       </form>
     </section>
 
-    <!-- 2 · Dados de envio (3.3.7) -->
+    <!--
+         SEÇÃO 2 · Reutiliza dados do passo anterior (ainda 3.3.7)
+         Checkbox permite copiar endereço, evitando redigitação.
+    -->
     <section aria-labelledby="envio">
       <h2 id="envio">2 · Dados de Envio (3.3.7)</h2>
 
       <form id="form-envio" class="card" novalidate>
+        <!-- Ação que preenche automaticamente os campos -->
         <label class="checkbox">
           <input type="checkbox" id="mesmo" />
           Utilizar dados do passo anterior.
@@ -59,49 +84,74 @@
         <button class="primary" type="submit">Continuar</button>
       </form>
 
-      <p class="note ✓">Nenhuma redigitação necessária — atende ao critério 3.3.7.</p>
+      <p class="note ✓">
+        Nenhuma redigitação necessária — atende ao critério 3.3.7.
+      </p>
     </section>
 
-    <!-- 3 · Login AA (3.3.8) -->
-     <br/>
+    <!--
+         SEÇÃO 3 · WCAG 3.3.8 — Accessible Authentication (nível AA)
+         Oferece revelação de senha e link mágico → não exige apenas memória.
+    -->
+    <br/>
     <h1>WCAG 3.3.8 — Accessible Authentication</h1>
     <section aria-labelledby="login-min">
       <h2 id="login-min">3 · Login — nível AA (3.3.8)</h2>
 
       <form id="form-login-min" class="card" novalidate>
+        <!-- Nome de usuário / e-mail -->
         <div class="field">
           <label for="user-min">Usuário ou e-mail</label>
-          <input id="user-min" name="user-min" type="email" autocomplete="username" required />
+          <input id="user-min" name="user-min" type="email"
+                 autocomplete="username" required />
         </div>
 
+        <!-- Senha com botão “Mostrar” (ajuda na digitação) -->
         <div class="field">
           <label for="pass-min">Senha</label>
           <div class="password-wrapper">
-            <input id="pass-min" name="pass-min" type="password" autocomplete="current-password" required />
-            <button class="ghost toggle" type="button" id="toggle-min" aria-controls="pass-min">Mostrar</button>
+            <input id="pass-min" name="pass-min" type="password"
+                   autocomplete="current-password" required />
+            <button class="ghost toggle" type="button"
+                    id="toggle-min" aria-controls="pass-min">
+              Mostrar
+            </button>
           </div>
         </div>
 
+        <!-- Botões de ação -->
         <div class="actions">
-          <button class="primary"   type="submit">Entrar</button>
+          <button class="primary" type="submit">Entrar</button>
           <p class="alt">ou</p>
-          <button class="secondary" type="button" id="link-min">Enviar link mágico</button>
+          <!-- “Link mágico” evita necessidade de lembrar senha -->
+          <button class="secondary" type="button" id="link-min">
+            Enviar link mágico
+          </button>
         </div>
       </form>
 
-      <p class="note ✓">Cópia/revelação de senha + alternativa sem memorização — cumpre o critério 3.3.8.</p>
+      <p class="note ✓">
+        Cópia/revelação de senha + alternativa sem memorização — cumpre 3.3.8.
+      </p>
     </section>
 
-     <br/>
+    <!--
+         SEÇÃO 4 · WCAG 3.3.9 — Accessible Authentication (nível AAA)
+         Demonstra autenticação por reconhecimento de ícone.
+         Precisa ter alternativa equivalente para cumprir AAA na prática.
+    -->
+    <br/>
     <h1>WCAG 3.3.9 — Accessible Authentication</h1>
-    <!-- 4 · Login AAA (3.3.9) -->
     <section aria-labelledby="login-max">
       <h2 id="login-max">4 · Login — nível AAA (3.3.9)</h2>
 
       <form id="form-login-max" class="card" novalidate>
         <label for="nome">Selecione o ícone definido no cadastro</label>
+
+        <!-- Lista de avatares como botões (role list) -->
         <fieldset>
           <ul class="avatars" role="list">
+            <!-- Cada <li> contém um <button> com emoji -->
             <li><button type="button" class="avatar" data-id="cafe">☕</button></li>
             <li><button type="button" class="avatar" data-id="livro">📖</button></li>
             <li><button type="button" class="avatar" data-id="gato">🐱</button></li>
@@ -114,18 +164,25 @@
           </ul>
         </fieldset>
 
+        <!-- Feedback ao usuário (aria-live) -->
         <p id="preview" class="preview" aria-live="polite"></p>
 
         <div class="actions">
-          <button class="secondary" type="button" id="testar-aaa" disabled>Testar seleção</button>
-          <button class="primary"   type="submit">Entrar</button>
+          <button class="secondary" type="button"
+                  id="testar-aaa" disabled>
+            Testar seleção
+          </button>
+          <button class="primary" type="submit">Entrar</button>
         </div>
       </form>
 
-      <p class="note ✓">Reconhecimento visual — cumpre o critério 3.3.9.</p>
+      <p class="note ✓">
+        Reconhecimento visual — cumpre o critério 3.3.9 (desde que haja alternativa).
+      </p>
     </section>
   </main>
 
+  <!-- JavaScript que ativa lógica de copiar endereço, mostrar senha, etc. -->
   <script src="index.js"></script>
 </body>
 </html>

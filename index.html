@@ -24,14 +24,15 @@
   <!-- ❹ Conteúdo principal da página. “container” centraliza e limita largura. -->
   <main class="container">
 
-    <h1>Demonstração de aplicação da WCAG.</h1>
+    <h1>Demonstração WCAG</h1>
 
     <!--
          SEÇÃO 1 · WCAG 3.3.7 — Redundant Entry
          Usuário fornece dados de contato; no passo seguinte poderá reutilizá-los.
     -->
     <section aria-labelledby="contato"><!-- liga com <h2 id="contato"> -->
-      <h1>WCAG 3.3.7 — Redundant Entry</h1>
+      <h1>WCAG 3.3.7 — Redundant Entry (A)</h1>
+      <p>Evitar que a pessoa tenha de informar de novo dados que já forneceu ou que o sistema já possua. Se a informação está disponível, o site deve preencher automaticamente ou oferecer uma opção de “usar dados anteriores”. Isso reduz trabalho repetitivo e erros.</p>
       <h2 id="contato">1 · Dados de Contato (3.3.7)</h2>
 
       <!-- “novalidate” evita que o browser trave o envio
@@ -94,7 +95,8 @@
          Oferece revelação de senha e link mágico → não exige apenas memória.
     -->
     <br/>
-    <h1>WCAG 3.3.8 — Accessible Authentication</h1>
+    <h1>WCAG 3.3.8 — Accessible Authentication (AA)</h1>
+    <p>Permitir que o usuário faça login sem depender apenas de memória ou digitação exata. A página deve aceitar copiar/colar, mostrar a senha se o usuário quiser, ou oferecer um método alternativo (ex.: link mágico por e-mail). O objetivo é garantir que pessoas com dificuldades de memória ou atenção consigam se autenticar.</p>
     <section aria-labelledby="login-min">
       <h2 id="login-min">3 · Login — nível AA (3.3.8)</h2>
 
@@ -141,7 +143,8 @@
          Precisa ter alternativa equivalente para cumprir AAA na prática.
     -->
     <br/>
-    <h1>WCAG 3.3.9 — Accessible Authentication</h1>
+    <h1>WCAG 3.3.9 — Accessible Authentication (AAA)</h1>
+    <p>O processo de login não pode exigir nenhuma tarefa cognitiva complexa (memorizar, transcrever, resolver quebra-cabeça). Deve haver um caminho totalmente livre de barreiras cognitivas, como selecionar um ícone ou usar biometria. Isso torna a autenticação acessível até para quem tem deficiências cognitivas mais severas.</p>
     <section aria-labelledby="login-max">
       <h2 id="login-max">4 · Login — nível AAA (3.3.9)</h2>
 

@@ -6,14 +6,14 @@
    primeiro formulário para o campo de envio.
    ========================================================== */
 document.getElementById('mesmo').addEventListener('change', e => {
-  const dest = document.getElementById('endereco-envio');        // campo destino
+  const dest = document.getElementById('endereco-envio');         // campo destino
   dest.value = e.target.checked                                   // se checkbox marcado
     ? document.getElementById('endereco').value                   // → copia endereço original
     : '';                                                         // se desmarcado → limpa
 });
 
-/* Intercepta o submit do 1º formulário apenas para fins de demo.
-   Na prática, aqui você enviaria os dados ao servidor. */
+/* Intercepta o submit do 1º formulário apenas para fins de demonstração.
+  Na prática, aqui você enviaria os dados ao servidor. */
 document.getElementById('form-contato').addEventListener('submit', e => {
   e.preventDefault();                                             // evita recarregar a página
   alert(
@@ -21,7 +21,6 @@ document.getElementById('form-contato').addEventListener('submit', e => {
     'Marque a opção no passo 2 para reutilizá-los.'
   );
 });
-
 
 /* ==========================================================
    WCAG 3.3.8 ▪ Accessible Authentication (AA)
@@ -44,7 +43,6 @@ btnToggle.addEventListener('click', () => {
 document.getElementById('link-min').addEventListener('click', () => {
   alert('Um “link mágico” foi enviado ao seu e-mail (demonstração).');
 });
-
 
 /* ==========================================================
    WCAG 3.3.9 ▪ Accessible Authentication (AAA)
